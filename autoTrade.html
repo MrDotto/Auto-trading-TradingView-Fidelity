@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html style="width: 200px;">
+<head>
+  <title>Auto Trade</title>
+</head>
+<body>
+  <div id="info">Extension not running</div>
+  <script src="/popup.js"></script>
+</body>
+</html>
+
+<!--
+
+                                                                                              fidelity -> send fetch
+                                                                                                /\
+                                                                                                |
+tradingview <====================================================================== background sends data to all tabs
+  |                                                                                             /\
+ \/                                                                                             |
+Server <== (alert) <= Pinescript      DetectWSS  <===================== client.js  -> sends data to background
+  |                                     |                                  /\
+ \/                                     |                                  |
+Sends alert =========>    Catches Wss from server =============> sends data to client
+
+-->

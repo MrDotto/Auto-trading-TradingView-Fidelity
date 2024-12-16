@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Trade",
+  "version": "1.0",
+  "permissions": ["scripting", "activeTab", "storage", "tabs", "webNavigation"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": ["https://www.tradingview.com/*", "https://digital.fidelity.com/*"],
+      "js": ["content_script.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "autoTrade.html"
+  },
+  "icons": {
+    "16": "extensionLogo.png",
+    "48": "extensionLogo.png",
+    "128": "extensionLogo.png"
+  },
+  "host_permissions": [
+    "https://*.tradingview.com/*",
+    "https://digital.fidelity.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["detectWSS.js"],
+      "matches": ["https://*.tradingview.com/*", "https://digital.fidelity.com/*"]
+    }
+  ],
+  "content_security_policy": {
+    "script-src": "'self'",
+    "object-src": "'self'"
+  }
+}
